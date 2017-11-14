@@ -1,6 +1,6 @@
 <h1>
   {{title}}
 </h1>
-<div *ngFor="let user of users">
+<div *ngFor="let user of users" class="col-xs-12 col-sm-6">
     <app-custom-card [data]="user"></app-custom-card>
 </div>

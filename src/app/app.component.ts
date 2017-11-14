@@ -23,11 +23,11 @@ export class AppComponent {
   title = 'USERS';
 
     users = [
-        new User("1", "Bart Simpson", "Always up to no good", "bart-simpson.png"),
-        new User("2", "Lisa Simpson", "The best of his class", "lisa-simpson.png"),
-        new User("3", "Homer Simpson", "D'oh!", "homer-simpson.png"),
-        new User("4", "Marge Simpson", "Great wife", "marge-simpson.png"),
-        new User("5", "Milhouse", "Nobody likes Milhouse!", "milhouse.jpeg"),
-        new User("6", "Ppal. Skinner", "I love my mum", "skinner.png"),
+        new User("1", "Bart Simpson", "Always up to no good", "./assets/images/bart-simpson.png"),
+        new User("2", "Lisa Simpson", "The best of his class", "./assets/images/lisa-simpson.png"),
+        new User("3", "Homer Simpson", "D'oh!", "./assets/images/homer-simpson.png"),
+        new User("4", "Marge Simpson", "Great wife", "./assets/images/marge-simpson.png"),
+        new User("5", "Milhouse", "Nobody likes Milhouse!", "./assets/images/milhouse.jpeg"),
+        new User("6", "Ppal. Skinner", "I love my mum", "./assets/images/skinner.png"),
     ]
 }
