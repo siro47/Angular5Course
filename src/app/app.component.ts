@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-class User {
+export class User {
     id: string;
     name: string;
     desc: string;
@@ -22,7 +22,7 @@ class User {
 export class AppComponent {
   title = 'USERS';
 
-    private users = [
+    users = [
         new User("1", "Bart Simpson", "Always up to no good", "bart-simpson.png"),
         new User("2", "Lisa Simpson", "The best of his class", "lisa-simpson.png"),
         new User("3", "Homer Simpson", "D'oh!", "homer-simpson.png"),
