@@ -19,6 +19,7 @@ import { GroupsDetailsComponent } from './admin-layout/groups/groups-details/gro
 import { GroupsFormComponent } from './admin-layout/groups/groups-form/groups-form.component';
 import { UsersDetailsComponent } from './admin-layout/users/users-details/users-details.component';
 import { UsersFormComponent } from './admin-layout/users/users-form/users-form.component';
+import {UsersService} from "./admin-layout/users/users.service";
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent},
@@ -58,7 +59,9 @@ const appRoutes: Routes = [
       MatButtonModule,
       RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [
+      UsersService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
