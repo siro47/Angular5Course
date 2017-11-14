@@ -34,4 +34,9 @@ export class AppComponent {
     public addNewUser() {
         this.users.push(new User("7", "Moe", "Prettiest bartender ever", "./assets/images/moe.png"));
     }
+
+    private removeUser(data) {
+        var index = this.users.findIndex(user => {return user.id == data.id});
+        this.users.splice(index, 1);
+    }
 }

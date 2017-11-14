@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {User} from "../app.component";
 
 @Component({
@@ -12,9 +12,15 @@ export class CustomCardComponent implements OnInit {
     @Input()
     data: User
 
+    @Output()
+    removeClicked = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
   }
 
+    removeCard() {
+        this.removeClicked.emit(this.data);
+    }
 }

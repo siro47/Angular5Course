@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
 import { AppComponent } from './app.component';
 import { CustomCardComponent } from './custom-card/custom-card.component';
 
@@ -14,7 +16,8 @@ import { CustomCardComponent } from './custom-card/custom-card.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+      AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
