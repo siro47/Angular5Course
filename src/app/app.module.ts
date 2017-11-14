@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
@@ -17,7 +20,10 @@ import { CustomCardComponent } from './custom-card/custom-card.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-      AngularFontAwesomeModule
+      AngularFontAwesomeModule,
+      BrowserAnimationsModule,
+      MatToolbarModule,
+      MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
