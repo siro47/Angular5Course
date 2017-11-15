@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
@@ -53,7 +54,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
       ReactiveFormsModule,
-    HttpModule,
+      HttpClientModule,
       AngularFontAwesomeModule,
       BrowserAnimationsModule,
       MatToolbarModule,

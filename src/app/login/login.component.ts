@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -8,19 +9,27 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  LOGIN_URL = 'http://localhost:3000/login';
+
   constructor(
-      private router: Router
+      private router: Router,
+      private http: HttpClient
   ) { }
 
   ngOnInit() {
   }
 
     checkForm(form) {
-        if (form.value.username === 'admin' && form.value.password === '12345' ) {
-            this.router.navigate(['/admin']);
-        } else {
-            alert('wrong user/pass')
-        }
+        this.http.post(this.LOGIN_URL, form.value)
+            .subscribe(response => {
+                if (response['userToken']) {
+                    localStorage.setItem('token', response['userToken']);
+                    this.router.navigate(['/admin']);
+                }
+            },
+            error => {
+                alert(error.message)
+            })
     }
 
 }
