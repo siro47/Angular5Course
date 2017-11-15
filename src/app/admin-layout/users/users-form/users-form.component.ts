@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-users-form',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersFormComponent implements OnInit {
 
-  constructor() { }
+    public myForm: FormGroup;
 
-  ngOnInit() {
-  }
+    constructor() { }
+
+    ngOnInit() {
+        this.myForm = new FormGroup({
+            name: new FormControl('', [<any>Validators.required]),
+            desc: new FormControl('', [<any>Validators.required, <any>Validators.minLength(5)]),
+        });
+    }
+
+    save(value, isValid) {
+
+    }
 
 }

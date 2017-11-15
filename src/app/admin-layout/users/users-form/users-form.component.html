@@ -1,3 +1,15 @@
-<p>
-  users-form works!
-</p>
+<div class="container">
+    <h3> ADD USER</h3>
+    <form [formGroup]="myForm" (ngSubmit)="save(myForm.value, myForm.valid)">
+        <div>
+            <input type="text" name="name" placeholder="Insert name.." formControlName="name">
+        </div>
+        <div>
+            <input type="text" name="desc" placeholder="Inser desc.." formControlName="desc">
+        </div>
+        <div>
+            <button mat-button type="submit">Aceptar</button>
+            <button mat-button routerLink="..">Cancelar</button>
+        </div>
+    </form>
+</div>
