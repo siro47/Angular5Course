@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
+import {Observable} from "rxjs/Observable";
+import "rxjs/add/observable/timer";
+import "rxjs/add/operator/debounce"
+import "rxjs/add/operator/map"
+import "rxjs/add/operator/do"
+
 import {UsersService} from "./users.service";
+
 
 @Component({
   selector: 'app-users',
@@ -32,8 +39,12 @@ export class UsersComponent implements OnInit {
         this.users = this.usersService.getUsers('');
 
         this.searchForm.valueChanges
+            .map(item => item.search)
+            .map(item => item.charAt(0).toUpperCase() + item.slice(1))
+            .do(item => console.log(item))
+            .debounce(() => Observable.timer(700))
             .subscribe(value => {
-                this.users = this.usersService.getUsers(value.search);
+                this.users = this.usersService.getUsers(value);
             })
     }
 }
