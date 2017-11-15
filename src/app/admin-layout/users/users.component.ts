@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+
 import {UsersService} from "./users.service";
 
 @Component({
@@ -10,11 +12,16 @@ export class UsersComponent implements OnInit {
 
     title = 'USERS';
     users = [];
+    
+    searchForm: FormGroup;
 
     constructor(
-        private usersService: UsersService
+        private usersService: UsersService,
+        private fb: FormBuilder
     ) {
-
+        this.searchForm = this.fb.group({
+            search: ['']
+        })
     }
 
     private removeUser(data) {
@@ -22,6 +29,11 @@ export class UsersComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.users = this.usersService.getUsers();
+        this.users = this.usersService.getUsers('');
+
+        this.searchForm.valueChanges
+            .subscribe(value => {
+                this.users = this.usersService.getUsers(value.search);
+            })
     }
 }
