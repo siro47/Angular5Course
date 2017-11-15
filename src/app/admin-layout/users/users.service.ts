@@ -28,8 +28,8 @@ export class UsersService {
 
   constructor() { }
 
-    public addNewUser() {
-        this.users.push(new User("7", "Moe", "Prettiest bartender ever", "./assets/images/moe.png"));
+    public addNewUser(user) {
+        this.users.push(user);
     }
 
     public removeUser(data) {

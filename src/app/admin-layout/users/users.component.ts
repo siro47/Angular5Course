@@ -17,10 +17,6 @@ export class UsersComponent implements OnInit {
 
     }
 
-    public addNewUser() {
-        this.usersService.addNewUser();
-    }
-
     private removeUser(data) {
         this.usersService.removeUser(data);
     }

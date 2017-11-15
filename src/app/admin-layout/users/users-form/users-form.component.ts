@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import {User, UsersService} from "../users.service";
 
 @Component({
   selector: 'app-users-form',
@@ -11,6 +13,9 @@ export class UsersFormComponent implements OnInit {
     public myForm: FormGroup;
 
     constructor(
+        private router: Router,
+        private route: ActivatedRoute,
+        private usersService: UsersService,
         private fb: FormBuilder
     ) { }
 
@@ -25,7 +30,11 @@ export class UsersFormComponent implements OnInit {
     }
 
     save(value, isValid) {
-
+        if (isValid) {
+            var newUser = new User ( new Date().getTime().toString(), value.name.firstName + ' ' + value.name.lastName, value.desc, '');
+            this.usersService.addNewUser(newUser);
+            this.router.navigate(['..'], {relativeTo: this.route});
+        }
     }
 
 }
