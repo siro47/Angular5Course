@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import {Observable} from "rxjs/Observable";
 
 export class User {
     id: string;
@@ -17,6 +19,8 @@ export class User {
 @Injectable()
 export class UsersService {
 
+    USERS_URL = 'http://localhost:3000/users';
+
     users = [
         new User("1", "Bart Simpson", "Always up to no good", "./assets/images/bart-simpson.png"),
         new User("2", "Lisa Simpson", "The best of his class", "./assets/images/lisa-simpson.png"),
@@ -26,7 +30,9 @@ export class UsersService {
         new User("6", "Ppal. Skinner", "I love my mum", "./assets/images/skinner.png"),
     ]
 
-  constructor() { }
+  constructor(
+      private http: HttpClient
+  ) { }
 
     public addNewUser(user) {
         this.users.push(user);
@@ -42,7 +48,7 @@ export class UsersService {
     }
 
     public getUsers(filter) {
-        return this.users.filter(item => item.name.indexOf(filter) > -1);
+        return this.http.get(this.USERS_URL);
     }
 
 }

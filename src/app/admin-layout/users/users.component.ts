@@ -7,7 +7,7 @@ import "rxjs/add/operator/debounce"
 import "rxjs/add/operator/map"
 import "rxjs/add/operator/do"
 
-import {UsersService} from "./users.service";
+import {UsersService, User} from "./users.service";
 
 
 @Component({
@@ -18,7 +18,7 @@ import {UsersService} from "./users.service";
 export class UsersComponent implements OnInit {
 
     title = 'USERS';
-    users = [];
+    users;
     
     searchForm: FormGroup;
 
@@ -36,7 +36,10 @@ export class UsersComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.users = this.usersService.getUsers('');
+        this.usersService.getUsers('')
+            .subscribe(users => {
+                this.users = users;
+            });
 
         this.searchForm.valueChanges
             .map(item => item.search)
@@ -44,7 +47,10 @@ export class UsersComponent implements OnInit {
             .do(item => console.log(item))
             .debounce(() => Observable.timer(700))
             .subscribe(value => {
-                this.users = this.usersService.getUsers(value);
+                this.usersService.getUsers(value)
+                    .subscribe(users => {
+                        this.users = users;
+                    });
             })
     }
 }
