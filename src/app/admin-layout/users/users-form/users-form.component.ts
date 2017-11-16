@@ -32,8 +32,10 @@ export class UsersFormComponent implements OnInit {
     save(value, isValid) {
         if (isValid) {
             var newUser = new User ( new Date().getTime().toString(), value.name.firstName + ' ' + value.name.lastName, value.desc, '');
-            this.usersService.addNewUser(newUser);
-            this.router.navigate(['..'], {relativeTo: this.route});
+            this.usersService.addNewUser(newUser)
+                .subscribe(response => {
+                    this.router.navigate(['..'], {relativeTo: this.route});
+                })
         }
     }
 

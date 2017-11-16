@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import {Observable} from "rxjs/Observable";
 
 export class User {
     id: string;
-    name: string;
-    desc: string;
+    username: string;
+    description: string;
     image: string;
 
     constructor(id: string, name: string, desc:string, image:string) {
         this.id = id;
-        this.name = name;
-        this.desc = desc;
+        this.username = name;
+        this.description = desc;
         this.image = image;
     }
 }
@@ -20,6 +20,7 @@ export class User {
 export class UsersService {
 
     USERS_URL = 'http://localhost:3000/users';
+    USER_URL = 'http://localhost:3000/user';
 
     users = [
         new User("1", "Bart Simpson", "Always up to no good", "./assets/images/bart-simpson.png"),
@@ -35,7 +36,11 @@ export class UsersService {
   ) { }
 
     public addNewUser(user) {
-        this.users.push(user);
+        const headers = new HttpHeaders().set('Authorization', ' Bearer ' + localStorage.getItem('token'));
+        
+        var pass = Math.random().toString(36).substring(7);
+        user.password = pass;
+        return this.http.post(this.USER_URL, user, {headers: headers});
     }
 
     public removeUser(data) {
