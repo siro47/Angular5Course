@@ -20,7 +20,7 @@ export class CustomCardComponent implements OnInit {
   ngOnInit() {
   }
 
-    removeCard() {
+    removeCard(event) {
         this.removeClicked.emit(this.data);
     }
 }

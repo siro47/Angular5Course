@@ -43,9 +43,10 @@ export class UsersService {
         return this.http.post(this.USER_URL, user, {headers: headers});
     }
 
-    public removeUser(data) {
-        var index = this.users.findIndex(user => {return user.id == data.id});
-        this.users.splice(index, 1);
+    public removeUser(id) {
+        const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+
+        return this.http.delete(this.USER_URL + '/' + id, {headers: headers});
     }
 
     public getUser(id) {

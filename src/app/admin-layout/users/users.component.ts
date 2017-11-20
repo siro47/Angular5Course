@@ -31,10 +31,6 @@ export class UsersComponent implements OnInit {
         })
     }
 
-    private removeUser(data) {
-        this.usersService.removeUser(data);
-    }
-
     ngOnInit() {
         this.usersService.getUsers('')
             .subscribe(users => {
@@ -51,6 +47,16 @@ export class UsersComponent implements OnInit {
                     .subscribe(users => {
                         this.users = users;
                     });
+            })
+    }
+
+    removeUser = function(data) {
+        this.usersService.removeUser(data._id)
+            .subscribe(result => {
+                this.usersService.getUsers('')
+                    .subscribe( result => {
+                        this.users = result
+                    })
             })
     }
 }
